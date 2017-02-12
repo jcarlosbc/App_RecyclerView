@@ -11,19 +11,19 @@ gen/
 out/
 
 # Gradle files
-.gradle.xml
+.gradle/
 
 # Log Files
 *.log
 
 # Intellij
 *.iml
-/.idea/workspace.xml
-/.idea/libraries
+.idea/workspace.xml
+.idea/libraries
 .idea/tasks.xml
-/.idea/gradle.xml
-/.idea/misc.xml
-/.idea/vcs.xml
+.idea/gradle.xml
+.idea/misc.xml
+.idea/vcs.xml
 
 
 /local.properties
