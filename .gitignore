@@ -11,7 +11,7 @@ gen/
 out/
 
 # Gradle files
-.gradle
+.gradle.xml
 
 # Log Files
 *.log
@@ -21,9 +21,12 @@ out/
 /.idea/workspace.xml
 /.idea/libraries
 .idea/tasks.xml
-.idea/gradle.xml
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/vcs.xml
 
-/local.propertie
+
+/local.properties
 .DS_Store
 /build
 /captures
