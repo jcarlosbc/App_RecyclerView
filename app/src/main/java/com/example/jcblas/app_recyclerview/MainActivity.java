@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*hola soy el voluemn de tu corazon*/
         /*MyAdapter_google adaptador = new MyAdapter_google(names);*/
         mRecyclerView.setAdapter(myAdapter_sg);
 
