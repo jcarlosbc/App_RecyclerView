@@ -21,10 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private MyAdapter_SG myAdapter_sg;
-
-
-    @Override
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -32,29 +29,20 @@ public class MainActivity extends AppCompatActivity {
         names=getAllNames();
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mLayoutManager = new LinearLayoutManager(this);
-        /*mAdapter = new MyAdapter(names, R.layout.recycler_view_item, new MyAdapter.OnJCItemClickListener() {
+         mRecyclerView.setHasFixedSize(true);
+         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new MyAdapter(names, R.layout.recycler_view_item, new MyAdapter.OnJCItemClickListener() {
             @Override
             public void onItemClick(String name, int position) {
                 Log.i("MainActivity>>","Hola mundo"+name);
-            }
-        });*/
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        //mRecyclerView.setAdapter(mAdapter);
-
-        myAdapter_sg = new MyAdapter_SG(names);
-        myAdapter_sg.setOnJCClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                delete(mRecyclerView.getChildAdapterPosition(v));
-
+                delete(position);
             }
         });
 
-        /*MyAdapter_google adaptador = new MyAdapter_google(names);*/
-        mRecyclerView.setAdapter(myAdapter_sg);
+        mRecyclerView.setAdapter(mAdapter);
 
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     @Override
@@ -79,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void addName(int position) {
         names.add(position,"New Name");
-        myAdapter_sg.notifyItemInserted(position);
+        mAdapter.notifyItemInserted(position);
         mLayoutManager.scrollToPosition(position);
     }
 
     private void delete(int position){
         names.remove(position);
-        myAdapter_sg.notifyItemRemoved(position);
+        mAdapter.notifyItemRemoved(position);
     }
 
     private List<String> getAllNames(){
