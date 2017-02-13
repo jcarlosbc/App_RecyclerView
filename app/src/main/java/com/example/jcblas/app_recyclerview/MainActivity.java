@@ -30,16 +30,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         names=getAllNames();
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mLayoutManager = new LinearLayoutManager(this);
-        /*mAdapter = new MyAdapter(names, R.layout.recycler_view_item, new MyAdapter.OnJCItemClickListener() {
-            @Override
-            public void onItemClick(String name, int position) {
-                Log.i("MainActivity>>","Hola mundo"+name);
-            }
-        });*/
         mRecyclerView.setLayoutManager(mLayoutManager);
-        //mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         myAdapter_sg = new MyAdapter_SG(names);
         myAdapter_sg.setOnJCClickListener(new View.OnClickListener() {
@@ -50,12 +46,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*hola soy el voluemn de tu corazon*/
-        /*MyAdapter_google adaptador = new MyAdapter_google(names);*/
+
         mRecyclerView.setAdapter(myAdapter_sg);
 
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     @Override
