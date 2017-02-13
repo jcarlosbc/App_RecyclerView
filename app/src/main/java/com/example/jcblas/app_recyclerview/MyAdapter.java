@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -15,11 +16,11 @@ import java.util.List;
  */
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private List<String> names;
+    private List<Movie> names;
     private int layout;
     private OnJCItemClickListener itemClickListener;
 
-    public MyAdapter(List<String> names, int layout, OnJCItemClickListener itemClickListener) {
+    public MyAdapter(List<Movie> names, int layout, OnJCItemClickListener itemClickListener) {
         this.names = names;
         this.layout = layout;
         this.itemClickListener = itemClickListener;
@@ -49,19 +50,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView textViewName;
+        public ImageView imgViewPoster;
 
         public ViewHolder(View itemView) {
             super(itemView);
             this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
         }
 
-        public void bind(final String name, final OnJCItemClickListener listener){
-            this.textViewName.setText(name);
+        public void bind(final Movie movie, final OnJCItemClickListener listener){
+            this.textViewName.setText(movie.getName());
+
             //itemView es una variable de clarada en la clase padre.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onItemClick(name, getAdapterPosition());
+                    listener.onItemClick(movie, getAdapterPosition());
                     Log.i("MyAdapter>>","bind.onClick");
                 }
             });
@@ -71,6 +74,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     public interface OnJCItemClickListener{
-        void onItemClick(String name, int position);
+        void onItemClick(Movie movie, int position);
     }
 }

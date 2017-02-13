@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private List<String> names;
+    private List<Movie> movies;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -26,18 +26,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        names=getAllNames();
+         movies=getAllMovies();
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mLayoutManager = new LinearLayoutManager(this);
          mRecyclerView.setHasFixedSize(true);
          mRecyclerView.setItemAnimator(new DefaultItemAnimator());
          mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new MyAdapter(names, R.layout.recycler_view_item, new MyAdapter.OnJCItemClickListener() {
+        mAdapter = new MyAdapter(movies, R.layout.recycler_view_item, new MyAdapter.OnJCItemClickListener() {
             @Override
             public void onItemClick(String name, int position) {
                 Log.i("MainActivity>>","Hola mundo"+name);
-                delete(position);
+                //delete(position);
             }
         });
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addName(int position) {
-        names.add(position,"New Name");
+        //names.add(position,"New Name");
         mAdapter.notifyItemInserted(position);
         mLayoutManager.scrollToPosition(position);
     }
@@ -78,5 +78,15 @@ public class MainActivity extends AppCompatActivity {
 
     private List<String> getAllNames(){
         return new ArrayList<>(Arrays.asList("Alejandro","Miguel","Sofia","Gerardo"));
+    }
+
+    public List<Movie> getAllMovies() {
+
+        return new ArrayList<Movie>(){{
+            add( new Movie(R.drawable.howl_poster3,"El castillo vagabundo"));
+            add( new Movie(R.drawable.images,"El viaje de Chihiro"));
+            add( new Movie(R.drawable.princesa_mononoke,"La Princesa Mononoke"));
+            add( new Movie(R.drawable.totoro,"Mi vecino Totoro"));
+        }};
     }
 }
