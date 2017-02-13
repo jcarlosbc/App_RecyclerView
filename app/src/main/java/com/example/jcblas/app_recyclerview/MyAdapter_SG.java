@@ -58,7 +58,7 @@ public class MyAdapter_SG extends RecyclerView.Adapter<MyAdapter_SG.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
+            //this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
         }
 
         public void bindTitular(String name) {

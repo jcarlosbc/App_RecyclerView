@@ -49,7 +49,7 @@ public class MyAdapter_google extends RecyclerView.Adapter<MyAdapter_google.MiVi
 
     public static class MiViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView textView;
+        private final TextView textView=null;
 
         public MiViewHolder(View v) {
             super(v);
@@ -60,7 +60,7 @@ public class MyAdapter_google extends RecyclerView.Adapter<MyAdapter_google.MiVi
                     Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
                 }
             });
-            textView = (TextView) v.findViewById(R.id.textViewName);
+            //textView = (TextView) v.findViewById(R.id.textViewName);
         }
 
         public TextView getTextView() {

@@ -54,11 +54,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
+            this.textViewName = (TextView) itemView.findViewById(R.id.txt_card);
+            this.imgViewPoster = (ImageView) itemView.findViewById(R.id.imageViewPoster);
         }
 
         public void bind(final Movie movie, final OnJCItemClickListener listener){
             this.textViewName.setText(movie.getName());
+            this.imgViewPoster.setImageResource(movie.getPoster());
 
             //itemView es una variable de clarada en la clase padre.
             itemView.setOnClickListener(new View.OnClickListener() {
